@@ -1,0 +1,52 @@
+<div class="daily-stats">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Nombre de cas</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <dl>
+                <dt>Actuels</dt>
+                <dd>{{(dailyStats | async)?.cases.active | number: '1.0-3' : 'fr-FR'}}
+                    ({{(dailyStats | async)?.cases.new}})
+                </dd>
+
+                <dt>Critiques</dt>
+                <dd>{{(dailyStats|async)?.cases.critical| number: '1.0-3' : 'fr-FR'}}</dd>
+                <dt>Gueris</dt>
+                <dd>{{(dailyStats|async)?.cases.recovered| number: '1.0-3' : 'fr-FR'}}</dd>
+            </dl>
+        </mat-card-content>
+
+
+    </mat-card>
+
+    <mat-divider></mat-divider>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Nombre de décès</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <dl>
+                <dt>Total</dt>
+                <dd>{{(dailyStats | async)?.deaths.total| number: '1.0-3' : 'fr-FR'}}
+                    ({{(dailyStats | async)?.deaths.new| number: '1.0-3' : 'fr-FR'}})
+                </dd>
+            </dl>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-divider></mat-divider>
+
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Nombre de test</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <dl>
+                <dt>Total</dt>
+                <dd>{{(dailyStats | async)?.tests.total| number: '1.0-3' : 'fr-FR'}}</dd>
+            </dl>
+        </mat-card-content>
+    </mat-card>
+</div>

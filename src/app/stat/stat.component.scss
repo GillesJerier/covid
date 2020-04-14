@@ -1,0 +1,15 @@
+.daily-stats {
+  padding: 0 1rem;
+
+  mat-card {
+    margin-bottom: 0.8rem;
+
+    dt {
+      margin: 0.4rem 0;
+    }
+
+    dd {
+      font-size: 2rem;
+    }
+  }
+}
