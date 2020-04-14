@@ -1,3 +1,11 @@
+<div class="stats-day">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Date de mise à
+                jour: {{(dailyStats | async)?.time | date: 'dd LLLL yyyy à hh:mm' : '': 'fr-FR'}}</mat-card-title>
+        </mat-card-header>
+    </mat-card>
+</div>
 <div class="daily-stats">
     <mat-card>
         <mat-card-header>
@@ -5,22 +13,18 @@
         </mat-card-header>
         <mat-card-content>
             <dl>
-                <dt>Actuels</dt>
-                <dd>{{(dailyStats | async)?.cases.active | number: '1.0-3' : 'fr-FR'}}
-                    ({{(dailyStats | async)?.cases.new}})
+                <dt class="active-cases">Actuels</dt>
+                <dd class="active-cases">{{(dailyStats | async)?.cases.active | number: '1.0-3' : 'fr-FR'}}
+                    <span class="new-data">({{(dailyStats | async)?.cases.new}})</span>
                 </dd>
 
-                <dt>Critiques</dt>
-                <dd>{{(dailyStats|async)?.cases.critical| number: '1.0-3' : 'fr-FR'}}</dd>
-                <dt>Gueris</dt>
-                <dd>{{(dailyStats|async)?.cases.recovered| number: '1.0-3' : 'fr-FR'}}</dd>
+                <dt class="critical-cases">Critiques</dt>
+                <dd class="critical-cases">{{(dailyStats|async)?.cases.critical| number: '1.0-3' : 'fr-FR'}}</dd>
+                <dt class="recovered-cases">Gueris</dt>
+                <dd class="recovered-cases">{{(dailyStats|async)?.cases.recovered| number: '1.0-3' : 'fr-FR'}}</dd>
             </dl>
         </mat-card-content>
-
-
     </mat-card>
-
-    <mat-divider></mat-divider>
 
     <mat-card>
         <mat-card-header>
@@ -28,15 +32,13 @@
         </mat-card-header>
         <mat-card-content>
             <dl>
-                <dt>Total</dt>
-                <dd>{{(dailyStats | async)?.deaths.total| number: '1.0-3' : 'fr-FR'}}
-                    ({{(dailyStats | async)?.deaths.new| number: '1.0-3' : 'fr-FR'}})
+                <dt class="deaths">Total</dt>
+                <dd class="deaths">{{(dailyStats | async)?.deaths.total| number: '1.0-3' : 'fr-FR'}}
+                    <span class="new-data">(+{{(dailyStats | async)?.deaths.new| number: '1.0-3' : 'fr-FR'}})</span>
                 </dd>
             </dl>
         </mat-card-content>
     </mat-card>
-
-    <mat-divider></mat-divider>
 
     <mat-card>
         <mat-card-header>
@@ -44,8 +46,8 @@
         </mat-card-header>
         <mat-card-content>
             <dl>
-                <dt>Total</dt>
-                <dd>{{(dailyStats | async)?.tests.total| number: '1.0-3' : 'fr-FR'}}</dd>
+                <dt class="tests">Total</dt>
+                <dd class="tests">{{(dailyStats | async)?.tests.total| number: '1.0-3' : 'fr-FR'}}</dd>
             </dl>
         </mat-card-content>
     </mat-card>
