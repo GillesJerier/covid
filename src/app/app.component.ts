@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {StatService} from './stat.service';
+import {StatService} from './service/stat.service';
 
 @Component({
     selector: 'app-root',

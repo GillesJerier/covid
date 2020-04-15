@@ -1,5 +1,12 @@
 .stats-day {
   padding: 1rem;
+
+  .update-at {
+    &.mobile {
+      display: block;
+      width: 100%;
+    }
+  }
 }
 
 .daily-stats {

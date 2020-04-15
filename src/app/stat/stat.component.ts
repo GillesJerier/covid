@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {StatService} from '../stat.service';
 import {map, share} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 import {StatModel, StatResponseModel} from './stat.model';
+import {DeviceDetectorService} from '../service/device-detector.service';
+import {StatService} from '../service/stat.service';
 
 @Component({
     selector: 'app-stat',
@@ -10,19 +10,26 @@ import {StatModel, StatResponseModel} from './stat.model';
     styleUrls: ['./stat.component.scss']
 })
 export class StatComponent implements OnInit {
-    public dailyStats: Observable<StatModel>;
+    public dailyStats: StatModel;
 
-    constructor(private statService: StatService) {
+    constructor(private statService: StatService, public deviceDetector: DeviceDetectorService) {
 
     }
 
     ngOnInit(): void {
-        this.dailyStats = this.statService
+        // this.statService.getStats();
+        this.statService
             .getFrenchStats()
             .pipe(
                 share(),
-                map((stats: StatResponseModel) => (stats && stats.results > 0 && stats.response) ? stats.response[0] : null)
-            );
+                map((stats: StatResponseModel) => {
+                    return (stats && stats.results > 0 && stats.response) ? stats.response[0] : null;
+                }),
+            )
+            .subscribe((response: StatModel) => {
+                this.dailyStats = response;
+                this.statService.getStats(response);
+            });
     }
 
 }
