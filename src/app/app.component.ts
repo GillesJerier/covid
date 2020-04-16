@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {StatService} from './service/stat.service';
+import {AuthService} from './service/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -7,9 +8,7 @@ import {StatService} from './service/stat.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'covid';
-
-    constructor(private statService: StatService) {
-        this.statService.getFrenchStats();
+    constructor(private statService: StatService, private authService: AuthService) {
+        this.authService.signIn();
     }
 }

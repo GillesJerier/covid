@@ -17,7 +17,6 @@ export class StatComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.statService.getStats();
         this.statService
             .getFrenchStats()
             .pipe(

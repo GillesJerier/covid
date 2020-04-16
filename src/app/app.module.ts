@@ -12,6 +12,8 @@ import {registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {MatIconModule} from '@angular/material/icon';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -32,10 +34,12 @@ registerLocaleData(localeFr, 'fr-FR');
         MatToolbarModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
+        AngularFireAuthModule,
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
         MatCardModule,
         MatBadgeModule,
-        MatDividerModule
+        MatDividerModule,
+        MatIconModule
     ],
     providers: [],
     bootstrap: [AppComponent]

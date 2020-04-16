@@ -4,7 +4,7 @@
             <mat-card-title>
                 Date de mise à jour:
                 <span class="update-at"
-                      [ngClass]="{'mobile': deviceDetector.isMobile()}">{{dailyStats?.time | date: 'dd LLLL yyyy à hh:mm' : '': 'fr-FR'}}</span>
+                      [ngClass]="{'mobile': deviceDetector.isMobile()}">{{dailyStats?.time | date: 'dd LLLL yyyy à HH\'h\'mm' : '': 'fr-FR'}}</span>
             </mat-card-title>
         </mat-card-header>
     </mat-card>
@@ -12,11 +12,16 @@
 <div class="daily-stats">
     <mat-card>
         <mat-card-header>
-            <mat-card-title>Nombre de cas</mat-card-title>
+            <mat-card-title>
+                <mat-icon aria-hidden="false" aria-label="Example home icon">group</mat-icon>
+                Nombre de cas
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <dl>
-                <dt class="active-cases">Actuels</dt>
+                <dt class="active-cases">
+                    Actuels
+                </dt>
                 <dd class="active-cases">{{dailyStats?.cases.active | number: '1.0-3' : 'fr-FR'}}
                     <span class="new-data">({{dailyStats?.cases.new}})</span>
                 </dd>
@@ -31,7 +36,10 @@
 
     <mat-card>
         <mat-card-header>
-            <mat-card-title>Nombre de décès</mat-card-title>
+            <mat-card-title>
+                <mat-icon>airline_seat_individual_suite</mat-icon>
+                Nombre de décès
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <dl>
@@ -45,7 +53,10 @@
 
     <mat-card>
         <mat-card-header>
-            <mat-card-title>Nombre de test</mat-card-title>
+            <mat-card-title>
+                <mat-icon>flash_on</mat-icon>
+                Nombre de test
+            </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <dl>
