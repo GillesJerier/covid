@@ -18,6 +18,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -39,7 +41,9 @@ registerLocaleData(localeFr, 'fr-FR');
         MatCardModule,
         MatBadgeModule,
         MatDividerModule,
-        MatIconModule
+        MatIconModule,
+        MatFormFieldModule,
+        MatSelectModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

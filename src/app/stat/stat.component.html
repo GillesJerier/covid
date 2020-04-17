@@ -1,4 +1,17 @@
-<div class="stats-day">
+<section>
+    <mat-form-field class="country-selector">
+        <mat-label>Select a country</mat-label>
+        <mat-select name="country" id="type" (valueChange)="onCountrySelected($event)"
+                    [value]="statService.franceKey">
+            <mat-option></mat-option>
+            <mat-option *ngFor="let country of statService.availableCountries"
+                        [value]="country">{{country}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</section>
+
+
+<section class="stats-day">
     <mat-card>
         <mat-card-header>
             <mat-card-title>
@@ -8,8 +21,8 @@
             </mat-card-title>
         </mat-card-header>
     </mat-card>
-</div>
-<div class="daily-stats">
+</section>
+<section class="daily-stats">
     <mat-card>
         <mat-card-header>
             <mat-card-title>
@@ -45,7 +58,8 @@
             <dl>
                 <dt class="deaths">Total</dt>
                 <dd class="deaths">{{dailyStats?.deaths.total| number: '1.0-3' : 'fr-FR'}}
-                    <span class="new-data">(+{{dailyStats?.deaths.new| number: '1.0-3' : 'fr-FR'}})</span>
+                    <span class="new-data"
+                          *ngIf="dailyStats?.deaths.new">(+{{dailyStats?.deaths.new| number: '1.0-3' : 'fr-FR'}})</span>
                 </dd>
             </dl>
         </mat-card-content>
@@ -65,4 +79,4 @@
             </dl>
         </mat-card-content>
     </mat-card>
-</div>
+</section>

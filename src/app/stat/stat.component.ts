@@ -12,13 +12,18 @@ import {StatService} from '../service/stat.service';
 export class StatComponent implements OnInit {
     public dailyStats: StatModel;
 
-    constructor(private statService: StatService, public deviceDetector: DeviceDetectorService) {
+    constructor(public statService: StatService, public deviceDetector: DeviceDetectorService) {
 
     }
 
     ngOnInit(): void {
+        console.log(this.statService.availableCountries);
+        this.getAndSetCountryStats(this.statService.franceKey);
+    }
+
+    getAndSetCountryStats(countryName) {
         this.statService
-            .getFrenchStats()
+            .getCountryStats(countryName)
             .pipe(
                 share(),
                 map((stats: StatResponseModel) => {
@@ -31,4 +36,8 @@ export class StatComponent implements OnInit {
             });
     }
 
+    onCountrySelected(countryName) {
+        console.log(countryName);
+        this.getAndSetCountryStats(countryName);
+    }
 }
