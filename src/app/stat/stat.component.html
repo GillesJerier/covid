@@ -80,3 +80,33 @@
         </mat-card-content>
     </mat-card>
 </section>
+
+<hr>
+
+<section class="stats-table mat-elevation-z8">
+    <!--    <mat-form-field>-->
+    <!--        <mat-label>Filter</mat-label>-->
+    <!--        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. USA">-->
+    <!--    </mat-form-field>-->
+    <table mat-table [dataSource]="dataSource" matSort *ngIf="!(loading | async)">
+        <ng-container matColumnDef="country">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+            <td mat-cell *matCellDef="let element">{{element.country}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="cases">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Cases</th>
+            <td mat-cell *matCellDef="let element">{{element.cases | number: '1.0-3' : 'fr-FR'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="deaths">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Deaths</th>
+            <td mat-cell *matCellDef="let element">{{element.deaths | number: '1.0-3' : 'fr-FR'}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+    </table>
+
+    <mat-spinner *ngIf="loading | async"></mat-spinner>
+</section>

@@ -10,9 +10,6 @@ export class AuthService {
     }
 
     signIn() {
-        this.afAuth
-            .signInAnonymously()
-            .then(console.log)
-            .catch(console.log);
+        return this.afAuth.signInAnonymously();
     }
 }

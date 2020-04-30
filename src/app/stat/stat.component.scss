@@ -67,3 +67,18 @@
     }
   }
 }
+
+hr {
+  margin: 2rem;
+}
+
+.stats-table {
+  height: 400px;
+  overflow: auto;
+  width: 90%;
+  margin: auto;
+
+  table {
+    width: 100%;
+  }
+}

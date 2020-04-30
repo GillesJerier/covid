@@ -204,6 +204,16 @@ export class StatService {
     }
 
 
+    getAllCountriesStats() {
+        const headers = {
+            'x-rapidapi-host': environment.rapidApi.host,
+            'x-rapidapi-key': environment.rapidApi.key
+        };
+        return this.http
+            .get(environment.rapidApi.url + '/statistics', {headers: headers});
+    }
+
+
     getCountryStats(country: string = this.franceKey) {
         const headers = {
             'x-rapidapi-host': environment.rapidApi.host,

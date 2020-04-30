@@ -8,7 +8,14 @@ import {AuthService} from './service/auth.service';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+    loading = true;
+
     constructor(private statService: StatService, private authService: AuthService) {
-        this.authService.signIn();
+        this.authService
+            .signIn()
+            .then(() => {
+                this.loading = false;
+            })
+            .catch(console.log);
     }
 }

@@ -18,8 +18,11 @@ import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatSelectModule} from "@angular/material/select";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSortModule} from '@angular/material/sort';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -44,6 +47,9 @@ registerLocaleData(localeFr, 'fr-FR');
         MatIconModule,
         MatFormFieldModule,
         MatSelectModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
+        MatSortModule
     ],
     providers: [],
     bootstrap: [AppComponent]
