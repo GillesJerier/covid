@@ -15,7 +15,6 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {MatIconModule} from '@angular/material/icon';
 
-import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -33,7 +32,6 @@ registerLocaleData(localeFr, 'fr-FR');
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         BrowserAnimationsModule,
         HttpClientModule,
         MatToolbarModule,

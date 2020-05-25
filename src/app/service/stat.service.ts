@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {StatModel} from '../stat/stat.model';
+import {FormattedCountryStats, StatModel} from '../stat/stat.model';
 import {map} from 'rxjs/operators';
 
 @Injectable({providedIn: 'root'})
@@ -246,5 +246,11 @@ export class StatService {
             console.log('Added to store', stats);
             this.db.collection('stats').add(stats);
         }
+    }
+
+    sortStatData(data: FormattedCountryStats[]) {
+        return data.sort((statA: FormattedCountryStats, statB: FormattedCountryStats) => {
+            return statB.deaths - statA.deaths;
+        });
     }
 }

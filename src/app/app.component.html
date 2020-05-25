@@ -4,10 +4,6 @@
 </mat-toolbar>
 
 <div class="content" role="main">
-
     <app-stat *ngIf="!loading"></app-stat>
-
     <mat-progress-spinner mode="indeterminate" *ngIf="loading"></mat-progress-spinner>
-
-    <router-outlet></router-outlet>
 </div>

@@ -15,9 +15,9 @@
     <mat-card>
         <mat-card-header>
             <mat-card-title>
-                Date de mise à jour:
+                Last update:
                 <span class="update-at"
-                      [ngClass]="{'mobile': deviceDetector.isMobile()}">{{dailyStats?.time | date: 'dd LLLL yyyy à HH\'h\'mm' : '': 'fr-FR'}}</span>
+                      [ngClass]="{'mobile': deviceDetector.isMobile()}">{{dailyStats?.time | date: 'medium' : '': 'fr-FR'}}</span>
             </mat-card-title>
         </mat-card-header>
     </mat-card>
@@ -27,21 +27,21 @@
         <mat-card-header>
             <mat-card-title>
                 <mat-icon aria-hidden="false" aria-label="Example home icon">group</mat-icon>
-                Nombre de cas
+                Cases
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
             <dl>
                 <dt class="active-cases">
-                    Actuels
+                    Active
                 </dt>
                 <dd class="active-cases">{{dailyStats?.cases.active | number: '1.0-3' : 'fr-FR'}}
                     <span class="new-data">({{dailyStats?.cases.new}})</span>
                 </dd>
 
-                <dt class="critical-cases">Critiques</dt>
+                <dt class="critical-cases">Critical</dt>
                 <dd class="critical-cases">{{dailyStats?.cases.critical| number: '1.0-3' : 'fr-FR'}}</dd>
-                <dt class="recovered-cases">Gueris</dt>
+                <dt class="recovered-cases">Recovered</dt>
                 <dd class="recovered-cases">{{dailyStats?.cases.recovered| number: '1.0-3' : 'fr-FR'}}</dd>
             </dl>
         </mat-card-content>
@@ -51,7 +51,7 @@
         <mat-card-header>
             <mat-card-title>
                 <mat-icon>airline_seat_individual_suite</mat-icon>
-                Nombre de décès
+                Deaths
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -69,7 +69,7 @@
         <mat-card-header>
             <mat-card-title>
                 <mat-icon>flash_on</mat-icon>
-                Nombre de test
+                Tests
             </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -88,7 +88,7 @@
     <!--        <mat-label>Filter</mat-label>-->
     <!--        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. USA">-->
     <!--    </mat-form-field>-->
-    <table mat-table [dataSource]="dataSource" matSort *ngIf="!(loading | async)">
+    <table mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="country">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
             <td mat-cell *matCellDef="let element">{{element.country}}</td>
@@ -104,7 +104,7 @@
             <td mat-cell *matCellDef="let element">{{element.deaths | number: '1.0-3' : 'fr-FR'}}</td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: stickyTable"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
     </table>
 

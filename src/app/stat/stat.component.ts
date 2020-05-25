@@ -18,10 +18,11 @@ export class StatComponent implements OnInit, OnDestroy {
     dataSource = new MatTableDataSource<{ country: string, cases: number, deaths: number }>();
     loading = new Subject<boolean>();
     columnsToDisplay = ['country', 'cases', 'deaths'];
+    stickyTable = true;
     private allStatsSubs: Subscription;
 
     constructor(public statService: StatService, public deviceDetector: DeviceDetectorService) {
-
+        this.stickyTable = !this.deviceDetector.isDesktop();
     }
 
     ngOnInit(): void {
@@ -62,7 +63,7 @@ export class StatComponent implements OnInit, OnDestroy {
                     const stats = response.map((stat: StatModel) => {
                         return {country: stat.country, cases: stat.cases.total, deaths: stat.deaths.total};
                     });
-                    this.dataSource.data = stats;
+                    this.dataSource.data = this.statService.sortStatData(stats);
                 },
                 (error) => {
                     console.log('Error fetching data for all countries: ', error);

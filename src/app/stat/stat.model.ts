@@ -25,3 +25,9 @@ export interface StatModel {
     day: string;
     time: string;
 }
+
+export interface FormattedCountryStats {
+    country: string,
+    cases: number,
+    deaths: number
+}
